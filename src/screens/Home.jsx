@@ -1,14 +1,19 @@
-import { StyleSheet, Text, View } from 'react-native'
-import React from 'react'
+import React from 'react';
+import { View, Text, Button } from 'react-native';
+import { removeToken } from '../store/storage';
 
-const Home = () => {
+const Home = ({ navigation }) => {
+  const handleLogout = () => {
+    removeToken();
+    navigation.replace('LoginStack');
+  };
+
   return (
-    <View>
-      <Text>Home</Text>
+    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+      <Text>Welcome to Netflix!</Text>
+      <Button title="Logout" onPress={handleLogout} />
     </View>
-  )
-}
+  );
+};
 
-export default Home
-
-const styles = StyleSheet.create({})
+export default Home;
